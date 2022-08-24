@@ -1,0 +1,22 @@
+import { useContext } from "react";
+import TaskCard from "./Taskcard";
+import { TaskContext } from "../context/TaskContext";
+
+function TaskList() {
+  const { tasks } = useContext(TaskContext);
+
+  if (tasks.length === 0) return <h1 
+    className="text-white text-4xl font-bold text-center mt-10">
+      No hay tareas por mostrar
+      </h1>;
+
+  return (
+    <div className="grid grid-cols-4 gap-2">
+      {tasks.map((task, index) => (
+        <TaskCard task={task} key={index} />
+      ))}
+    </div>
+  );
+}
+
+export default TaskList;
